@@ -10,9 +10,16 @@ class clase extends Model
     use HasFactory;
 
     protected $fillable = [
-        'materia',
+        'idMateria',
         'fecha',
         'tema',
         'actividad',
+        'recursos',
+        'observaciones',
+        'estrategia'
     ];
+
+    public function Materia(){
+        return $this->hasOne('App\Models\Materia', 'id', 'idMateria');
+    }
 }

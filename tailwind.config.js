@@ -12,7 +12,7 @@ export default {
         "./node_modules/flowbite/**/*.js",
     ],
 
-    darkMode: 'media',
+    darkMode: 'class',
 
     theme: {
         extend: {
@@ -22,5 +22,5 @@ export default {
         },
     },
 
-    plugins: [forms, typography,require('flowbite/plugin')],
+    plugins: [forms, typography, require('flowbite/plugin')],
 };
