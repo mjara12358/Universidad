@@ -46,8 +46,8 @@
                                         </div>
                                         <div class="flex flex-col items-center pb-10">
                                             <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                                src="{{ asset('storage/images-materias/image.jpeg') }}"
-                                                alt="Bonnie image" />
+                                                src="{{ asset($materia->user->profile_photo_url) }}"
+                                                alt="{{ $materia->user->name }}'s profile photo" />
                                             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                                                 {{ $materia->user->name }}</h5>
                                             <span
