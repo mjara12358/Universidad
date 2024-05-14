@@ -9,16 +9,15 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="dark:bg-gray-800  bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <br>
                 <div class="flex ml-7 pb-2 justify-left">
 
                     <button data-modal-target="agregar-modal" data-modal-toggle="agregar-modal" type="button"
                         class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-3 h-3 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 16">
-                            <path
-                                d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
+                        <svg class="mr-2 h-6 w-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {{ __('Agregar') }}
                     </button>
@@ -29,11 +28,11 @@
                             {{ session('status') }}</div>
                     @endif
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-100">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-white">ID</th>
-                                <th scope="col" class="px-6 py-3 text-white">Nombre</th>
-                                <th scope="col" class="px-6 py-3 text-white">Acciones</th>
+                                <th scope="col" class="px-6 py-3">ID</th>
+                                <th scope="col" class="px-6 py-3">Nombre</th>
+                                <th scope="col" class="px-6 py-3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,15 +47,12 @@
                                         {{ $permiso->name }}</td>
                                     <td scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <x-button data-modal-target="editar-modal" data-modal-toggle="editar-modal"
-                                            type="button" onclick="editarClase({{ json_encode($permiso) }})">>
-                                            {{ __('Modificar') }}
-                                        </x-button>
-                                        <x-button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
-                                            class="dark:bg-red-500 bg-red-500 hover:bg-blue-400 dark:hover:bg-blue-400"
+                                        <x-button-edit data-modal-target="editar-modal" data-modal-toggle="editar-modal"
+                                            type="button" class="mr-1" onclick="editarClase({{ json_encode($permiso) }})">
+                                        </x-button-edit>
+                                        <x-button-delete data-modal-target="delete-modal" data-modal-toggle="delete-modal"
                                             type="button" onclick="eliminar({{ $permiso->id }})">
-                                            {{ __('Eliminar') }}
-                                        </x-button>
+                                        </x-button-delete>
                                         </form>
                                     </td>
                                 </tr>
@@ -206,11 +202,11 @@
 
                     <button type="submit"
                         class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                clip-rule="evenodd"></path>
+                        <svg class="mr-2 h-5 w-5 text-gray-200" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
                         </svg>
                         {{ __('Guardar') }}
                     </button>

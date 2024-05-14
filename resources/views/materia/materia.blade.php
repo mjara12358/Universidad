@@ -12,326 +12,319 @@
                 <div
                     class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
 
-                    <div class="mb-2">
-                        <section
-                            class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply sm:rounded-lg">
-                            @if (session('status'))
-                                <div id="session-status"
-                                    class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2 sm:rounded-lg">
-                                    {{ session('status') }}</div>
-                            @endif
-                            <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-10"
-                                style="max-height: 500px;">
-                                <h1
-                                    class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-                                    {{ $materia->nombre }}</h1>
-                                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-                                    {{ __('Semestre: ') }}{{ $materia->semestre }}{{ __(' - Creditos: ') }}{{ $materia->creditos }}
-                                </p>
-                                <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-                                    <div
-                                        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                        <div class="flex justify-end px-4 pt-4">
-                                            {{-- <button id="dropdownButton" data-dropdown-toggle="dropdown"
-                                                class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-                                                type="button">
-                                                <span class="sr-only">Open dropdown</span>
-                                                <svg class="w-5 h-5" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                    viewBox="0 0 16 3">
-                                                    <path
-                                                        d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-                                                </svg>
-                                            </button> --}}
-                                        </div>
-                                        <div class="flex flex-col items-center pb-10">
-                                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                                src="{{ asset($materia->user->profile_photo_url) }}"
-                                                alt="{{ $materia->user->name }}'s profile photo" />
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                                                {{ $materia->user->name }}</h5>
-                                            <span
-                                                class="text-sm text-gray-500 dark:text-gray-400">{{ $materia->user->email }}</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                        </section>
-                    </div>
-
-                    <div class="mt-2">
-                        <div
-                            class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                            <div class="flex items-center justify-between">
-                            </div>
-                            <div class="flow-root">
-                                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    <li class="py-3 sm:py-4">
-                                        <div class="flex items-center">
-                                            <div class="flex items-center">
-                                                <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3 mr-3"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill="currentColor" d="M8 1V0v1Zm4 0V0v1Zm2 4v1h1V5h-1ZM6 5H5v1h1V5Zm2-3h4V0H8v2Zm4 0a1 1 0 0 1 .707.293L14.121.879A3 3 0 0 0 12 0v2Zm.707.293A1 1 0 0 1 13 3h2a3 3 0 0 0-.879-2.121l-1.414 1.414ZM13 3v2h2V3h-2Zm1 1H6v2h8V4ZM7 5V3H5v2h2Zm0-2a1 1 0 0 1 .293-.707L5.879.879A3 3 0 0 0 5 3h2Zm.293-.707A1 1 0 0 1 8 2V0a3 3 0 0 0-2.121.879l1.414 1.414ZM2 6h16V4H2v2Zm16 0h2a2 2 0 0 0-2-2v2Zm0 0v12h2V6h-2Zm0 12v2a2 2 0 0 0 2-2h-2Zm0 0H2v2h16v-2ZM2 18H0a2 2 0 0 0 2 2v-2Zm0 0V6H0v12h2ZM2 6V4a2 2 0 0 0-2 2h2Zm16.293 3.293C16.557 11.029 13.366 12 10 12c-3.366 0-6.557-.97-8.293-2.707L.293 10.707C2.557 12.971 6.366 14 10 14c3.634 0 7.444-1.03 9.707-3.293l-1.414-1.414ZM10 9v2a2 2 0 0 0 2-2h-2Zm0 0H8a2 2 0 0 0 2 2V9Zm0 0V7a2 2 0 0 0-2 2h2Zm0 0h2a2 2 0 0 0-2-2v2Z"/>
-                                                
-                                                </svg>
-                                                <h5
-                                                    class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                                                    {{ __('Clases') }}</h5>
-
-                                                <div class="flex ml-4 pb-2 justify-center">
-                                                    @role('Docente|Admin')
-                                                        <button data-modal-target="agregar-modal"
-                                                            data-modal-toggle="agregar-modal" type="button"
-                                                            class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                            <svg class="w-3 h-3 text-white me-2" aria-hidden="true"
-                                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                                viewBox="0 0 20 16">
-                                                                <path
-                                                                    d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z" />
-                                                            </svg>
-                                                            {{ __('Agregar') }}
-                                                        </button>
-                                                    @endrole
+                    <div class="grid grid-cols-1 divide-y divide-gray-900 dark:divide-gray-200">
+                        <div>
+                            <div class="mb-2">
+                                <section
+                                    class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply sm:rounded-lg">
+                                    @if (session('status'))
+                                        <div id="session-status"
+                                            class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2 sm:rounded-lg">
+                                            {{ session('status') }}</div>
+                                    @endif
+                                    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-10"
+                                        style="max-height: 500px;">
+                                        <h1
+                                            class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+                                            {{ $materia->nombre }}</h1>
+                                        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+                                            {{ __('Semestre: ') }}{{ $materia->semestre }}{{ __(' - Creditos: ') }}{{ $materia->creditos }}
+                                        </p>
+                                        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+                                            <div
+                                                class="w-full max-w-sm bg-white bg-opacity-65 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:bg-opacity-85 dark:border-gray-700">
+                                                <div class="flex justify-end px-4 pt-4">
+                                                    {{-- <button id="dropdownButton" data-dropdown-toggle="dropdown"
+                                                        class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                                                        type="button">
+                                                        <span class="sr-only">Open dropdown</span>
+                                                        <svg class="w-5 h-5" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                            viewBox="0 0 16 3">
+                                                            <path
+                                                                d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                                                        </svg>
+                                                    </button> --}}
+                                                </div>
+                                                <div class="flex flex-col items-center pb-10">
+                                                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                                                        src="{{ asset($materia->user->profile_photo_url) }}"
+                                                        alt="{{ $materia->user->name }}'s profile photo" />
+                                                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                        {{ $materia->user->name }}</h5>
+                                                    <span
+                                                        class="text-sm text-gray-800 dark:text-gray-400">{{ $materia->user->email }}</span>
                                                 </div>
                                             </div>
-                                    </li>
-                                    <li class="py-3 sm:py-4">
-                                        <div class="flex items-center ">
-                                            <div class="flex-1 min-w-0 ms-1">
-                                                <div
-                                                    class="relative overflow-x-auto shadow-md sm:rounded-lg w-[100%] mx-auto">
-                                                    {{-- @if (session('status'))
-                                                        <div id="session-status"
-                                                            class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2">
-                                                            {{ session('status') }}</div>
-                                                    @endif --}}
-                                                    <table
-                                                        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                        <thead
-                                                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                                            <tr>
-                                                                <th scope="col" class="px-6 py-3 text-white">ID</th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Materia
-                                                                </th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Fecha
-                                                                </th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Tema
-                                                                </th>
-                                                                <th scope="col" class="px-6 py-3 text-white">
-                                                                    Actividad</th>
-                                                                <th scope="col" class="px-6 py-3 text-white">
-                                                                    Asistencia</th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Recursos
-                                                                </th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Observaciones</th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Estrategia</th>
-                                                                @role('Docente|Admin')
-                                                                    <th scope="col" class="px-6 py-3 text-white">Acciones
-                                                                    </th>
-                                                                @endrole
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($clases as $clase)
-                                                                <tr
-                                                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                                                    <td scope="row"
-                                                                        class="px-6 py- font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->id }}</td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->materia->nombre }}
-                                                                    </td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->fecha }}</td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->tema }}</td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->actividad }}</td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        <div class="flex justify-center">
-                                                                            <button type="button"
-                                                                                data-modal-target="asistencia-modal"
-                                                                                data-modal-toggle="asistencia-modal"
-                                                                                onclick="claseAsistencia({{ $clase->id }}, {{ $asistencias }}, {{ $estudiantes }})"
-                                                                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 bg-gray-200 dark:bg-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-300 dark:focus:bg-gray-700">
-                                                                                <svg class="w-6 h-6" aria-hidden="true"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                    fill="none" viewBox="0 0 21 21">
-                                                                                    <path stroke="currentColor"
-                                                                                        stroke-linecap="round"
-                                                                                        stroke-linejoin="round"
-                                                                                        stroke-width="2"
-                                                                                        d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z" />
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{-- {{ pathinfo($clase->recursos, PATHINFO_BASENAME) }}|  --}}
-                                                                        <a class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
-                                                                            target="_blank"
-                                                                            href="{{ asset($clase->recursos) }}">
-                                                                            {{ __('Ver') }}
-                                                                        </a> | <a href="{{ asset($clase->recursos) }}"
-                                                                            download="{{ pathinfo($clase->recursos, PATHINFO_BASENAME) }}"
-                                                                            class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200">
-                                                                            {{ __('Descargar') }}
-                                                                        </a></td>
-                                                                        <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->observaciones }}</td>
-                                                                        <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $clase->estrategia }}</td>
-                                                                    @role('Docente|Admin')
-                                                                        <td scope="row"
-                                                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                            <x-button data-modal-target="editar-modal"
-                                                                                data-modal-toggle="editar-modal"
-                                                                                type="button"
-                                                                                onclick="editarClase({{ json_encode($clase) }}, {{ $materias }})">
-                                                                                {{ __('Modificar') }}
-                                                                            </x-button>
-                                                                            <x-button data-modal-target="delete-modal"
-                                                                                data-modal-toggle="delete-modal"
-                                                                                class="dark:bg-red-500 bg-red-500 hover:bg-blue-400 dark:hover:bg-blue-400"
-                                                                                type="button"
-                                                                                onclick="eliminar({{ $clase->id }})">
-                                                                                {{ __('Eliminar') }}
-                                                                            </x-button>
-                                                                            </form>
-                                                                        </td>
-                                                                    @endrole
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
+        
                                         </div>
-                                    </li>
-
-                                </ul>
+                                </section>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-2">
-                        <div
-                            class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                            <div class="flex items-center justify-between">
-                            </div>
-                            <div class="flow-root">
-                                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    <li class="py-3 sm:py-4">
-                                        <div class="flex items-center">
-                                            <div class="flex items-center">
-                                                <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3 mr-3"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill="currentColor" d="M8 1V0v1Zm4 0V0v1Zm2 4v1h1V5h-1ZM6 5H5v1h1V5Zm2-3h4V0H8v2Zm4 0a1 1 0 0 1 .707.293L14.121.879A3 3 0 0 0 12 0v2Zm.707.293A1 1 0 0 1 13 3h2a3 3 0 0 0-.879-2.121l-1.414 1.414ZM13 3v2h2V3h-2Zm1 1H6v2h8V4ZM7 5V3H5v2h2Zm0-2a1 1 0 0 1 .293-.707L5.879.879A3 3 0 0 0 5 3h2Zm.293-.707A1 1 0 0 1 8 2V0a3 3 0 0 0-2.121.879l1.414 1.414ZM2 6h16V4H2v2Zm16 0h2a2 2 0 0 0-2-2v2Zm0 0v12h2V6h-2Zm0 12v2a2 2 0 0 0 2-2h-2Zm0 0H2v2h16v-2ZM2 18H0a2 2 0 0 0 2 2v-2Zm0 0V6H0v12h2ZM2 6V4a2 2 0 0 0-2 2h2Zm16.293 3.293C16.557 11.029 13.366 12 10 12c-3.366 0-6.557-.97-8.293-2.707L.293 10.707C2.557 12.971 6.366 14 10 14c3.634 0 7.444-1.03 9.707-3.293l-1.414-1.414ZM10 9v2a2 2 0 0 0 2-2h-2Zm0 0H8a2 2 0 0 0 2 2V9Zm0 0V7a2 2 0 0 0-2 2h2Zm0 0h2a2 2 0 0 0-2-2v2Z"/>
-                                                
-                                                </svg>
-                                                <h5
-                                                    class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                                                    {{ __('Asistencia') }}</h5>
-                                            </div>
-                                    </li>
-                                    <li class="py-3 sm:py-4">
-                                        <div class="flex items-center ">
-                                            <div class="flex-1 min-w-0 ms-1">
-                                                <div class="mt-1 flex flex-wrap gap-6 dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                                                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                        <thead
-                                                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                                            <tr>
-                                                                <th scope="col" class="px-6 py-3 text-white">ID</th>
-                                                                <th scope="col" class="px-6 py-3 text-white">Estudiante</th>
-                                                                @foreach ($clases as $clase)
-                                                                    <th>{{ $clase->fecha }}</th>
-                                                                @endforeach
-                                                                @role('Docente|Admin')
-                                                                    <th scope="col" class="px-6 py-3 text-white">Acciones</th>
-                                                                @endrole
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($estudiantes as $estudiante)
-                                                                <tr
-                                                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                                                    <td scope="row"
-                                                                        class="px-6 py- font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $estudiante->id }}</td>
-                                                                    <td scope="row"
-                                                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                        {{ $estudiante->name }}</td>
+                        <div>
+                            <div class="mt-2 mb-2">
+                                <div
+                                    class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                                    <div class="flex items-center justify-between">
+                                    </div>
+                                    <div class="flow-root">
+                                        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                                            <li class="py-3 sm:py-4">
+                                                <div class="flex items-center">
+                                                    <div class="flex items-center">
+                                                        <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3 mr-3"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill="currentColor" d="M8 1V0v1Zm4 0V0v1Zm2 4v1h1V5h-1ZM6 5H5v1h1V5Zm2-3h4V0H8v2Zm4 0a1 1 0 0 1 .707.293L14.121.879A3 3 0 0 0 12 0v2Zm.707.293A1 1 0 0 1 13 3h2a3 3 0 0 0-.879-2.121l-1.414 1.414ZM13 3v2h2V3h-2Zm1 1H6v2h8V4ZM7 5V3H5v2h2Zm0-2a1 1 0 0 1 .293-.707L5.879.879A3 3 0 0 0 5 3h2Zm.293-.707A1 1 0 0 1 8 2V0a3 3 0 0 0-2.121.879l1.414 1.414ZM2 6h16V4H2v2Zm16 0h2a2 2 0 0 0-2-2v2Zm0 0v12h2V6h-2Zm0 12v2a2 2 0 0 0 2-2h-2Zm0 0H2v2h16v-2ZM2 18H0a2 2 0 0 0 2 2v-2Zm0 0V6H0v12h2ZM2 6V4a2 2 0 0 0-2 2h2Zm16.293 3.293C16.557 11.029 13.366 12 10 12c-3.366 0-6.557-.97-8.293-2.707L.293 10.707C2.557 12.971 6.366 14 10 14c3.634 0 7.444-1.03 9.707-3.293l-1.414-1.414ZM10 9v2a2 2 0 0 0 2-2h-2Zm0 0H8a2 2 0 0 0 2 2V9Zm0 0V7a2 2 0 0 0-2 2h2Zm0 0h2a2 2 0 0 0-2-2v2Z"/>
+                                                        
+                                                        </svg>
+                                                        <h5
+                                                            class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                                                            {{ __('Clases') }}</h5>
+        
+                                                        <div class="flex ml-4 pb-2 justify-center">
+                                                            @role('Docente|Admin')
+                                                                <button data-modal-target="agregar-modal"
+                                                                    data-modal-toggle="agregar-modal" type="button"
+                                                                    class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                    <svg class="mr-2 h-6 w-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                    </svg>
+                                                                    {{ __('Agregar') }}
+                                                                </button>
+                                                            @endrole
+                                                        </div>
+                                                    </div>
+                                            </li>
+                                            <li class="py-3 sm:py-4">
+                                                <div class="flex items-center ">
+                                                    <div class="flex-1 min-w-0 ms-1">
+                                                        <div
+                                                            class="relative overflow-x-auto shadow-md sm:rounded-lg w-[100%] mx-auto">
+                                                            {{-- @if (session('status'))
+                                                                <div id="session-status"
+                                                                    class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2">
+                                                                    {{ session('status') }}</div>
+                                                            @endif --}}
+                                                            <table
+                                                                class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                                <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-100">
+                                                                    <tr>
+                                                                        <th scope="col" class="px-6 py-3">ID</th>
+                                                                        <th scope="col" class="px-6 py-3">Fecha
+                                                                        </th>
+                                                                        <th scope="col" class="px-6 py-3">Tema
+                                                                        </th>
+                                                                        <th scope="col" class="px-6 py-3">
+                                                                            Actividad</th>
+                                                                        <th scope="col" class="px-6 py-3">
+                                                                            Asistencia</th>
+                                                                        <th scope="col" class="px-6 py-3">Recursos
+                                                                        </th>
+                                                                        <th scope="col" class="px-6 py-3">Observaciones</th>
+                                                                        <th scope="col" class="px-6 py-3">Estrategia</th>
+                                                                        @role('Docente|Admin')
+                                                                            <th scope="col" class="px-6 py-3">Acciones
+                                                                            </th>
+                                                                        @endrole
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
                                                                     @foreach ($clases as $clase)
-                                                                        <td scope="row"
-                                                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                            @php
-                                                                                $asistencia = $asistencias->first(function ($item) use (
-                                                                                    $estudiante,
-                                                                                    $clase,
-                                                                                ) {
-                                                                                    return $item->idEstudiante === $estudiante->id &&
-                                                                                        $item->idClase === $clase->id;
-                                                                                });
-                                                                            @endphp
-                                                                            @if ($asistencia)
-                                                                                @if ($asistencia->estado === 'Faltante')
-                                                                                    <span
-                                                                                        class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
-                                                                                        <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
-                                                                                        Faltante
-                                                                                    </span>
-                                                                                @elseif ($asistencia->estado === 'Presente')
-                                                                                    <span
-                                                                                        class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                                                                                        <span
-                                                                                            class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
-                                                                                        Presente
-                                                                                    </span>
-                                                                                @elseif ($asistencia->estado === 'Tarde')
-                                                                                    <span
-                                                                                        class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-green-300">
-                                                                                        <span class="w-2 h-2 me-1 bg-blue-500 rounded-full"></span>
-                                                                                        Tarde
-                                                                                    </span>
-                                                                                @else
-                                                                                    <!-- Aquí puedes manejar otros estados si es necesario -->
-                                                                                    {{ $asistencia->estado }}
-                                                                                @endif
-                                                                            @else
-                                                                                <!-- Aquí puedes mostrar algún mensaje o dejar el espacio en blanco -->
-                                                                                {{ __('Sin estado') }}
-                                                                            @endif
-                                                                        </td>
+                                                                        <tr
+                                                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                                            <td scope="row"
+                                                                                class="px-6 py- font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->id }}</td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->fecha }}</td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->tema }}</td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->actividad }}</td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                <div class="flex justify-center">
+                                                                                    <button type="button"
+                                                                                        data-modal-target="asistencia-modal"
+                                                                                        data-modal-toggle="asistencia-modal"
+                                                                                        onclick="claseAsistencia({{ $clase->id }}, {{ $asistencias }}, {{ $estudiantes }})"
+                                                                                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 bg-gray-200 dark:bg-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-300 dark:focus:bg-gray-700">
+                                                                                        <svg class="w-6 h-6" aria-hidden="true"
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            fill="none" viewBox="0 0 21 21">
+                                                                                            <path stroke="currentColor"
+                                                                                                stroke-linecap="round"
+                                                                                                stroke-linejoin="round"
+                                                                                                stroke-width="2"
+                                                                                                d="m6.072 10.072 2 2 6-4m3.586 4.314.9-.9a2 2 0 0 0 0-2.828l-.9-.9a2 2 0 0 1-.586-1.414V5.072a2 2 0 0 0-2-2H13.8a2 2 0 0 1-1.414-.586l-.9-.9a2 2 0 0 0-2.828 0l-.9.9a2 2 0 0 1-1.414.586H5.072a2 2 0 0 0-2 2v1.272a2 2 0 0 1-.586 1.414l-.9.9a2 2 0 0 0 0 2.828l.9.9a2 2 0 0 1 .586 1.414v1.272a2 2 0 0 0 2 2h1.272a2 2 0 0 1 1.414.586l.9.9a2 2 0 0 0 2.828 0l.9-.9a2 2 0 0 1 1.414-.586h1.272a2 2 0 0 0 2-2V13.8a2 2 0 0 1 .586-1.414Z" />
+                                                                                        </svg>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{-- {{ pathinfo($clase->recursos, PATHINFO_BASENAME) }}|  --}}
+                                                                                <a class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+                                                                                    target="_blank"
+                                                                                    href="{{ asset($clase->recursos) }}">
+                                                                                    {{ __('Ver') }}
+                                                                                </a> | <a href="{{ asset($clase->recursos) }}"
+                                                                                    download="{{ pathinfo($clase->recursos, PATHINFO_BASENAME) }}"
+                                                                                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200">
+                                                                                    {{ __('Descargar') }}
+                                                                                </a></td>
+                                                                                <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->observaciones }}</td>
+                                                                                <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $clase->estrategia }}</td>
+                                                                            @role('Docente|Admin')
+                                                                                <td scope="row"
+                                                                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                    <x-button-edit data-modal-target="editar-modal"
+                                                                                        data-modal-toggle="editar-modal"
+                                                                                        type="button" class="mr-1"
+                                                                                        onclick="editarClase({{ json_encode($clase) }}, {{ $materias }})">
+                                                                                    </x-button-edit>
+                                                                                    <x-button-delete data-modal-target="delete-modal"
+                                                                                        data-modal-toggle="delete-modal"
+                                                                                        type="button"
+                                                                                        onclick="eliminar({{ $clase->id }})">
+                                                                                    </x-button-delete>
+                                                                                    </form>
+                                                                                </td>
+                                                                            @endrole
+                                                                        </tr>
                                                                     @endforeach
-                                                                    @role('Docente|Admin')
-                                                                        <td>
-                                                                            <x-button data-modal-target="editasistencia-modal"
-                                                                                data-modal-toggle="editasistencia-modal" type="button"
-                                                                                onclick="editarAsis({{ $asistencia ?? 'null' }}, {{ $asistencia->user ?? 'null' }}, {{ $clases }}, {{ $asistencias }})">
-                                                                                {{ __('Modificar') }}
-                                                                            </x-button>
-                                                                        </td>
-                                                                    @endrole
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
+                                            </li>
+        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mt-2">
+                                <div
+                                    class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                                    <div class="flex items-center justify-between">
+                                    </div>
+                                    <div class="flow-root">
+                                        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                                            <li class="py-3 sm:py-4">
+                                                <div class="flex items-center">
+                                                    <div class="flex items-center">
+                                                        <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3 mr-3"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill="currentColor" d="M8 1V0v1Zm4 0V0v1Zm2 4v1h1V5h-1ZM6 5H5v1h1V5Zm2-3h4V0H8v2Zm4 0a1 1 0 0 1 .707.293L14.121.879A3 3 0 0 0 12 0v2Zm.707.293A1 1 0 0 1 13 3h2a3 3 0 0 0-.879-2.121l-1.414 1.414ZM13 3v2h2V3h-2Zm1 1H6v2h8V4ZM7 5V3H5v2h2Zm0-2a1 1 0 0 1 .293-.707L5.879.879A3 3 0 0 0 5 3h2Zm.293-.707A1 1 0 0 1 8 2V0a3 3 0 0 0-2.121.879l1.414 1.414ZM2 6h16V4H2v2Zm16 0h2a2 2 0 0 0-2-2v2Zm0 0v12h2V6h-2Zm0 12v2a2 2 0 0 0 2-2h-2Zm0 0H2v2h16v-2ZM2 18H0a2 2 0 0 0 2 2v-2Zm0 0V6H0v12h2ZM2 6V4a2 2 0 0 0-2 2h2Zm16.293 3.293C16.557 11.029 13.366 12 10 12c-3.366 0-6.557-.97-8.293-2.707L.293 10.707C2.557 12.971 6.366 14 10 14c3.634 0 7.444-1.03 9.707-3.293l-1.414-1.414ZM10 9v2a2 2 0 0 0 2-2h-2Zm0 0H8a2 2 0 0 0 2 2V9Zm0 0V7a2 2 0 0 0-2 2h2Zm0 0h2a2 2 0 0 0-2-2v2Z"/>
+                                                        
+                                                        </svg>
+                                                        <h5
+                                                            class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                                                            {{ __('Asistencia') }}</h5>
+                                                    </div>
+                                            </li>
+                                            <li class="py-3 sm:py-4">
+                                                <div class="flex items-center ">
+                                                    <div class="flex-1 min-w-0 ms-1">
+                                                        <div class="mt-1 flex flex-wrap gap-6 dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                                                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                                <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-100">
+                                                                    <tr>
+                                                                        <th scope="col" class="px-6 py-3">ID</th>
+                                                                        <th scope="col" class="px-6 py-3">Estudiante</th>
+                                                                        @foreach ($clases as $clase)
+                                                                            <th>{{ $clase->fecha }}</th>
+                                                                        @endforeach
+                                                                        @role('Docente|Admin')
+                                                                            <th scope="col" class="px-6 py-3">Acciones</th>
+                                                                        @endrole
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($estudiantes as $estudiante)
+                                                                        <tr
+                                                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                                            <td scope="row"
+                                                                                class="px-6 py- font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $estudiante->id }}</td>
+                                                                            <td scope="row"
+                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                {{ $estudiante->name }}</td>
+                                                                            @foreach ($clases as $clase)
+                                                                                <td scope="row"
+                                                                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                    @php
+                                                                                        $asistencia = $asistencias->first(function ($item) use (
+                                                                                            $estudiante,
+                                                                                            $clase,
+                                                                                        ) {
+                                                                                            return $item->idEstudiante === $estudiante->id &&
+                                                                                                $item->idClase === $clase->id;
+                                                                                        });
+                                                                                    @endphp
+                                                                                    @if ($asistencia)
+                                                                                        @if ($asistencia->estado === 'Faltante')
+                                                                                            <span
+                                                                                                class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                                                                                <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
+                                                                                                Faltante
+                                                                                            </span>
+                                                                                        @elseif ($asistencia->estado === 'Presente')
+                                                                                            <span
+                                                                                                class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                                                                                                <span
+                                                                                                    class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
+                                                                                                Presente
+                                                                                            </span>
+                                                                                        @elseif ($asistencia->estado === 'Tarde')
+                                                                                            <span
+                                                                                                class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-green-300">
+                                                                                                <span class="w-2 h-2 me-1 bg-blue-500 rounded-full"></span>
+                                                                                                Tarde
+                                                                                            </span>
+                                                                                        @else
+                                                                                            <!-- Aquí puedes manejar otros estados si es necesario -->
+                                                                                            {{ $asistencia->estado }}
+                                                                                        @endif
+                                                                                    @else
+                                                                                        <!-- Aquí puedes mostrar algún mensaje o dejar el espacio en blanco -->
+                                                                                        {{ __('Sin estado') }}
+                                                                                    @endif
+                                                                                </td>
+                                                                            @endforeach
+                                                                            @role('Docente|Admin')
+                                                                                <td class="text-center">
+                                                                                    <x-button-edit data-modal-target="editasistencia-modal"
+                                                                                        data-modal-toggle="editasistencia-modal" type="button"
+                                                                                        onclick="editarAsis({{ $asistencia ?? 'null' }}, {{ $asistencia->user ?? 'null' }}, {{ $clases }}, {{ $asistencias }})">
+                                                                                    </x-button-edit>
+                                                                                </td>
+                                                                            @endrole
+                                                                        </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+        
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -573,11 +566,11 @@
 
                     <button type="submit"
                         class="mt-2 text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                clip-rule="evenodd"></path>
+                        <svg class="mr-2 h-5 w-5 text-gray-200" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
                         </svg>
                         {{ __('Guardar') }}
                     </button>
@@ -616,12 +609,11 @@
                     @csrf
                     <div class="pt-6 pb-6 relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-100">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-white">ID</th>
-                                    <th scope="col" class="px-6 py-3 text-white">Estudiante</th>
-                                    <th scope="col" class="px-6 py-3 text-white">Estado</th>
+                                    <th scope="col" class="px-6 py-3">ID</th>
+                                    <th scope="col" class="px-6 py-3">Estudiante</th>
+                                    <th scope="col" class="px-6 py-3">Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -668,11 +660,11 @@
                     @role('Docente|Admin')
                         <button type="submit"
                             class="mt-4 text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                    clip-rule="evenodd"></path>
+                            <svg class="mr-2 h-5 w-5 text-gray-200" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                <polyline points="17 21 17 13 7 13 7 21" />
+                                <polyline points="7 3 7 8 15 8" />
                             </svg>
                             {{ __('Guardar') }}
                         </button>
@@ -710,11 +702,10 @@
                     @method('PUT')
                     <div class="pt-6 pb-6 relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="text-xs text-gray-900 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-100">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-white">ID</th>
-                                    <th scope="col" class="px-6 py-3 text-white">Estudiante</th>
+                                    <th scope="col" class="px-6 py-3">ID</th>
+                                    <th scope="col" class="px-6 py-3">Estudiante</th>
                                     @foreach ($clases as $clase)
                                         <th>{{ $clase->fecha }}</th>
                                     @endforeach
@@ -757,11 +748,11 @@
                     @role('Docente|Admin')
                         <button type="submit"
                             class="mt-4 text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                    clip-rule="evenodd"></path>
+                            <svg class="mr-2 h-5 w-5 text-gray-200" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                <polyline points="17 21 17 13 7 13 7 21" />
+                                <polyline points="7 3 7 8 15 8" />
                             </svg>
                             {{ __('Guardar') }}
                         </button>

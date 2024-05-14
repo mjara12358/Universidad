@@ -19,7 +19,7 @@ class UsuariosController extends Controller
         $roles = Role::all();
 
         $user = Auth::user();
-        if($user->hasRole('Admin')){
+        if($user->hasRole('Admin|Director')){
             return view('users.users', compact('users', 'roles'));
         }else{
             return redirect()->route('dashboard');

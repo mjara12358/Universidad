@@ -12,10 +12,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     @role('Admin')
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
                         <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
                             {{ __('Roles') }}
                         </x-nav-link>
@@ -32,8 +32,27 @@
                             {{ __('Materia') }}
                         </x-nav-link>
                     @endrole
+                    @role('Director')
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            {{ __('Usuarios') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('clases.index') }}" :active="request()->routeIs('clases.index')">
+                            {{ __('Clases') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('materias.index') }}" :active="request()->routeIs('materias.index')">
+                            {{ __('Materia') }}
+                        </x-nav-link>
+                    @endrole
+                    @role('Docente|Estudiante')
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endrole
                 </div>
-                
+
                 <div class="col-span-1 px-6 flex items-center justify-center sm:justify-center ">
                     <div class="flex justify-center">
                         <button id="toggleThemeButton"
@@ -182,18 +201,46 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
-                {{ __('Roles') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                {{ __('Usuarios') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('clases.index') }}" :active="request()->routeIs('clases.index')">
-                {{ __('Clases') }}
-            </x-responsive-nav-link>
+            @role('Admin')
+                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                    {{ __('Roles') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('permisos.index') }}" :active="request()->routeIs('permisos.index')">
+                    {{ __('Permisos') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                    {{ __('Usuarios') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('clases.index') }}" :active="request()->routeIs('clases.index')">
+                    {{ __('Clases') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('materias.index') }}" :active="request()->routeIs('materias.index')">
+                    {{ __('Materia') }}
+                </x-responsive-nav-link>
+            @endrole
+            @role('Director')
+                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                    {{ __('Usuarios') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('clases.index') }}" :active="request()->routeIs('clases.index')">
+                    {{ __('Clases') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('materias.index') }}" :active="request()->routeIs('materias.index')">
+                    {{ __('Materia') }}
+                </x-responsive-nav-link>
+            @endrole
+            @role('Docente|Estudiante')
+                <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            @endrole
+
         </div>
 
         <!-- Responsive Settings Options -->

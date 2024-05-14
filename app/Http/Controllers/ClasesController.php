@@ -25,7 +25,7 @@ class ClasesController extends Controller
         $asistencias = Asistencia::all();
 
         $user = Auth::user();
-        if($user->hasRole('Admin')){
+        if($user->hasRole('Admin|Director')){
             return view('clase.clases', compact('clases', 'materias', 'estudiantes', 'asistencias'));
         }else{
             return redirect()->route('dashboard');

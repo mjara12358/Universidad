@@ -22,7 +22,7 @@ class MateriasController extends Controller
         $profesores = User::role('Docente')->with('roles')->get();
 
         $user = Auth::user();
-        if($user->hasRole('Admin')){
+        if($user->hasRole('Admin|Director')){
             return view('materia.materias', compact('materias', 'profesores'));
         }else{
             return redirect()->route('dashboard');

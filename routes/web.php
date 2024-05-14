@@ -12,7 +12,7 @@ use App\Http\Controllers\MateriasController;
 use App\Livewire\CreateClaseModal;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware([
