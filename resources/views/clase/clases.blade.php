@@ -45,7 +45,7 @@
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto">
                     @if (session('status'))
                         <div id="session-status"
-                            class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2">
+                            class="bg-green-800 text-gray-200 dark:text-gray-200 text-center text-lg font-bold p-2">
                             {{ session('status') }}</div>
                     @endif
                     <table id="tabla-clases" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -459,6 +459,7 @@
                                             <input type="hidden" name="idAsistencia[]" id="idAsistencia{{ $estudiante->id }}">
                                             <select name="estado[]" id="estado{{ $estudiante->id }}"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <option value="Sin estado">Sin estado</option>
                                                 <option value="Faltante">Faltante</option>
                                                 <option value="Presente">Presente</option>
                                                 <option value="Tarde">Tarde</option>

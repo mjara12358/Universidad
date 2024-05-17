@@ -19,7 +19,7 @@
                                     class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply sm:rounded-lg">
                                     @if (session('status'))
                                         <div id="session-status"
-                                            class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2 sm:rounded-lg">
+                                            class="bg-green-800 text-gray-200 dark:text-gray-200 text-center text-lg font-bold p-2 sm:rounded-lg">
                                             {{ session('status') }}</div>
                                     @endif
                                     <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-10"
@@ -249,7 +249,7 @@
                                                                             <th>{{ $clase->fecha }}</th>
                                                                         @endforeach
                                                                         @role('Docente|Admin')
-                                                                            <th scope="col" class="px-6 py-3">Acciones</th>
+                                                                            <th scope="col" class="px-6 py-3 text-center">Acciones</th>
                                                                         @endrole
                                                                     </tr>
                                                                 </thead>
@@ -261,8 +261,9 @@
                                                                                 class="px-6 py- font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                                                 {{ $estudiante->id }}</td>
                                                                             <td scope="row"
-                                                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                                                {{ $estudiante->name }}</td>
+                                                                                class="px-6 py-4 flex items-center font-medium text-gray-900 whitespace-nowrap dark:text-white">                                 
+                                                                                <img class="w-10 h-10 p-1 mr-4 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" src="{{ $estudiante->profile_photo_url }}" alt="Bordered avatar">
+                                                                                <span class1="ml-2 text-gray-900 dark:text-gray-200">{{ $estudiante->name }}</span></td>
                                                                             @foreach ($clases as $clase)
                                                                                 <td scope="row"
                                                                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -642,6 +643,7 @@
                                                 @if (auth()->user()->hasRole('Estudiante|Directora'))
                                                 onmousedown="return false;"
                                                 @endif>
+                                                <option value="Sin estado">Sin estado</option>
                                                 <option value="Faltante">Faltante</option>
                                                 <option value="Presente">Presente</option>
                                                 <option value="Tarde">Tarde</option>
@@ -730,6 +732,7 @@
                                             <input type="hidden" name="idClase[]" id="editidClase{{ $clase->id }}">
                                             <select name="estado[]" id="edit-estado{{ $clase->id }}"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <option value="Sin estado">Sin estado</option>
                                                 <option value="Faltante">Faltante</option>
                                                 <option value="Presente">Presente</option>
                                                 <option value="Tarde">Tarde</option>

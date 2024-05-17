@@ -32,6 +32,7 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'idClase' => 'required',
             'estado.*' => 'required', // El '*' indica que todos los elementos del array son requeridos

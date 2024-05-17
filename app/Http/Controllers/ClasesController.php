@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class ClasesController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
@@ -25,11 +24,11 @@ class ClasesController extends Controller
         $asistencias = Asistencia::all();
 
         $user = Auth::user();
-        if($user->hasRole('Admin|Director')){
+        if ($user->hasRole('Admin|Director')) {
             return view('clase.clases', compact('clases', 'materias', 'estudiantes', 'asistencias'));
-        }else{
+        } else {
             return redirect()->route('dashboard');
-        } 
+        }
     }
 
     /**
@@ -53,16 +52,30 @@ class ClasesController extends Controller
             'actividad' => 'required',
             'recursos' => 'required',
             'observaciones' => 'required',
-            'estrategia' => 'required'
+            'estrategia' => 'required',
         ]);
 
         $requestData = $request->all();
-        $fileName = time().$request->file('recursos')->getClientOriginalName();
+        $fileName = time() . $request->file('recursos')->getClientOriginalName();
         $path = $request->file('recursos')->storeAs('recursos', $fileName, 'public');
-        $requestData["recursos"] = '/storage/'.$path;
-        Clase::create($requestData);
-    
-        return redirect()->route('materias.show', ['materia' => $request->idMateria])->with('status', __('Clase Creada Exitosamente'));
+        $requestData['recursos'] = '/storage/' . $path;
+        $clase = Clase::create($requestData);
+
+        // Obtener todos los estudiantes
+        $estudiantes = User::role('Estudiante')->with('roles')->get();
+
+        // Crear asistencias para cada estudiante
+        foreach ($estudiantes as $estudiante) {
+            Asistencia::create([
+                'idClase' => $clase->id,
+                'estado' => 'Sin estado',
+                'idEstudiante' => $estudiante->id,
+            ]);
+        }
+
+        return redirect()
+            ->route('materias.show', ['materia' => $request->idMateria])
+            ->with('status', __('Clase Creada Exitosamente'));
     }
 
     /**
@@ -93,21 +106,23 @@ class ClasesController extends Controller
             'fecha' => 'required',
             'tema' => 'required',
             'actividad' => 'required',
-            'estrategia' => 'required'
+            'estrategia' => 'required',
         ]);
-    
+
         $requestData = $request->all();
-    
+
         // Verifica si se ha cargado un archivo de recursos
         if ($request->hasFile('recursos')) {
-            $fileName = time().$request->file('recursos')->getClientOriginalName();
+            $fileName = time() . $request->file('recursos')->getClientOriginalName();
             $path = $request->file('recursos')->storeAs('recursos', $fileName, 'public');
-            $requestData["recursos"] = '/storage/'.$path;
+            $requestData['recursos'] = '/storage/' . $path;
         }
-    
+
         $clase->update($requestData);
-    
-        return redirect()->route('materias.show', ['materia' => $request->idMateria])->with('status', __('Clase Actualizada Exitosamente'));
+
+        return redirect()
+            ->route('materias.show', ['materia' => $request->idMateria])
+            ->with('status', __('Clase Actualizada Exitosamente'));
     }
 
     /**
@@ -115,8 +130,12 @@ class ClasesController extends Controller
      */
     public function destroy(Clase $clase)
     {
-        DB::table('asistencias')->where('idClase', $clase->id)->delete();
+        DB::table('asistencias')
+            ->where('idClase', $clase->id)
+            ->delete();
         $clase->delete();
-        return redirect()->route('materias.show', ['materia' => $clase->idMateria])->with('status', __('Clase Eliminada Exitosamente'));
+        return redirect()
+            ->route('materias.show', ['materia' => $clase->idMateria])
+            ->with('status', __('Clase Eliminada Exitosamente'));
     }
 }

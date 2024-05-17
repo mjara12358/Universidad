@@ -44,7 +44,7 @@
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto">
                     @if (session('status'))
                         <div id="session-status"
-                            class="bg-green-800 text-gray-800 dark:text-gray-200 text-center text-lg font-bold p-2">
+                            class="bg-green-800 text-gray-200 dark:text-gray-200 text-center text-lg font-bold p-2">
                             {{ session('status') }}</div>
                     @endif
                     <table id="tabla-users" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

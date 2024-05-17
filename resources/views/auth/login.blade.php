@@ -42,13 +42,14 @@
                     </a>
                 @endif
 
-                @if (Route::has('register'))
+                {{-- @if (Route::has('register'))
                     <a href="{{ route('register') }}"
                         class="rounded-md ms-4 px-2 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                         {{ __('Register') }}
                     </a>
-                @endif
-                <x-button class="">
+                @endif --}}
+
+                <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
 
